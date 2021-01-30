@@ -1,0 +1,145 @@
+  <!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>type-tester</title>
+
+    <meta name="author" content="Simon Bouvier">
+    <meta property="og:title" content="type-tester" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="Type-tester est une site web permettant à chacun.e de mettre en scène et comparer différentes versions d'une typographie." />
+  
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <body>
+    <div id="container">
+
+      <div class="informations">
+        <div>
+          <span> TYPE TESTER - </span>
+          <span> Voir sur <a href="https://github.com/vernone/type-tester">Github</a></span>
+        </div>
+        <button>ajouter une colonne</button>
+      </div>
+
+    <div id="tester-container">
+    
+      <div  id="loader"  class="container-horizontal" style="flex:0">
+
+        <div class="container-vertical" id="loader01">
+          <div class="inputfile-wrapper">
+            <input id="01" type="file" class="inputFile">
+            <label><input type="checkbox"  onchange="DisplayChanged(this)" style="margin-bottom: auto;">masquer</label>
+          </div>
+          <div data-order="01">
+            <label><input type="checkbox" onchange="drawPointsChanged(this)" checked="checked"> Dessiner les points</label>
+            <label><input type="checkbox" onchange="drawMetricsChanged(this)"> Afficher les métriques</label>
+            <label><input type="checkbox" onchange="kerningChanged(this)" checked="checked"> Afficher avec le kerning</label>
+            <label><input type="checkbox" onchange="ligaturesChanged(this)" checked="checked"> Afficher avec les ligatures</label>
+          </div>
+        </div>
+
+        <div class="container-vertical ">
+          <div class="inputfile-wrapper">
+            <input id="02" type="file" class="inputFile">
+            <label><input type="checkbox"  onchange="DisplayChanged(this)" style="margin-bottom: auto;">masquer</label>
+          </div>
+          <div data-order="02">
+            <label><input type="checkbox" onchange="drawPointsChanged(this)" checked="checked"> Dessiner les points</label>
+            <label><input type="checkbox" onchange="drawMetricsChanged(this)"> Afficher les métriques</label>
+            <label><input type="checkbox" onchange="kerningChanged(this)" checked="checked"> Afficher avec le kerning</label>
+            <label><input type="checkbox" onchange="ligaturesChanged(this)" checked="checked"> Afficher avec les ligatures</label>
+          </div>
+        </div>
+
+        <div class="container-vertical ">
+          <div class="inputfile-wrapper">
+            <input id="03" type="file" class="inputFile">
+            <label><input type="checkbox"  onchange="DisplayChanged(this)" style="margin-bottom: auto;">masquer</label>
+          </div>
+          <div data-order="03">
+            <label><input type="checkbox" onchange="drawPointsChanged(this)" checked="checked"> Dessiner les points</label>
+            <label><input type="checkbox" onchange="drawMetricsChanged(this)"> Afficher les métriques</label>
+            <label><input type="checkbox" onchange="kerningChanged(this)" checked="checked"> Afficher avec le kerning</label>
+            <label><input type="checkbox" onchange="ligaturesChanged(this)" checked="checked"> Afficher avec les ligatures</label>
+          </div>
+        </div>
+
+      </div>   
+
+      <div id="preview-container" class="container-horizontal" >
+
+        <!-- <input type="text" class="text-input" onkeyup="changeAllText()" value="Hello, World!" id="textField"> -->
+
+        <div id="sliders">
+          <div> 
+            <label for="opacity01"> Typographie n°1</label>
+            <input type="range" class="inputSlide" id="opacity01" name="opacity-slider" min="0" max="100" value="100" step="1" data-order='01'>
+          </div>
+          <div> 
+            <label for="opacity02"> Typographie n°2</label>
+            <input type="range" class="inputSlide" id="opacity02" name="opacity-slide" min="0" max="100" value="100" step="1" data-order='02'>
+          </div>
+          <div> 
+            <label for="opacity03"> Typographie n°3</label>
+            <input type="range" class="inputSlide" id="opacity03" name="opacity-slide" min="0" max="100" value="100" step="1" data-order='03'>
+          </div> 
+        </div> 
+
+        <div id="slide-timeline"> 
+          <label for="slide-timeline"> Timeline</label>
+          <input type="range" class="inputSlide"  name="slide-timeline" min="0" max="200" value="100" step="1" data-order='00'>
+        </div> 
+
+        <div id="canvas-container">
+          <canvas id="preview01" width="1340" height="300"></canvas>
+          <canvas id="preview02" width="1340" height="300"></canvas>
+          <canvas id="preview03" width="1340" height="300"></canvas>
+        </div>
+        
+      </div>  
+
+      <div id="mise-en-page" class="container-horizontal">
+        <div class="container-vertical layout-01">
+          <span class="big">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus tempora rerum illum quaerat totam debitis eius dicta fuga ad quae, cum odit voluptate dolorum iure excepturi autem repudiandae dolor voluptas.
+          </span>
+          <span class="mise-en-page_details">
+            37.5 px
+          </span>
+        </div>
+        <div class="container-vertical layout-02">
+          <span class="big">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus tempora rerum illum quaerat totam debitis eius dicta fuga ad quae, cum odit voluptate dolorum iure excepturi autem repudiandae dolor voluptas.
+          </span>
+          <span class="mise-en-page_details">
+            37.5 px
+          </span>
+        </div>
+        <div class="container-vertical layout-03" >
+          <span class="big">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus tempora rerum illum quaerat totam debitis eius dicta fuga ad quae, cum odit voluptate dolorum iure excepturi autem repudiandae dolor voluptas.
+          </span>
+          <span class="mise-en-page_details">
+            37.5 px
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="informations">
+      <span id="message"></span>
+      <span>Site rendu possible grâce à la bibliothèque <a href="https://opentype.js.org/">opentype.js.</a></span>
+    </div>
+
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
+  <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+
+</html>
