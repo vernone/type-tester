@@ -1,5 +1,6 @@
 # Bientôt disponible
-- Changer le texte affiché au centre via un formulaire input, ainsi que sa taille
+- Changer le texte affiché au centre via un formulaire input ✔️ 
+- ainsi que sa taille 
 - Changer la taille des aperçus des différentes versions de la typographie en bas (dans les divs avec la bordure noire), ainsi que la taille de celle-ci via des boutons + ou - 
 - Ajouter une colonne (j'attends d'avoir la majorité des fonctionnalités pour m'atteler à cela)
 
