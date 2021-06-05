@@ -1,0 +1,60 @@
+.button_CB span, .inputfile-infos > span, .button{
+    background-color:#ddd;;
+    border-radius:4px;
+    overflow:auto;
+    float:left;
+    padding: 4.1px 8px 5px 8px;
+    border-radius: 13px;
+    border:none;
+    font-family: "Joanne-Regular";
+    font-size: 11px;
+}
+
+input{
+    font-family: "Joanne-Regular";
+    font-size: 11px;
+}
+
+.button_CB label span:hover {
+    background:#ddd;
+    cursor: pointer;
+}
+
+.button_CB label span {
+    text-align:center;
+    display:block;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently*/
+}
+
+.button_CB label input {
+    display: none;
+}
+
+.button_CB input:checked + span{
+    background-color:blue;
+    color:white;
+}
+
+.button#upload{
+    width: 100%;
+}
+
+#file-upload-button{
+    background-color: yellow !important;
+}
+
+.gutter{
+    border-top:1px solid lightgray;
+    border-bottom:1px solid lightgray;
+
+}
+
+.gutter:hover{
+    color:blue;
+    cursor: grab;
+}
