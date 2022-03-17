@@ -96,7 +96,7 @@ var miseEnPage = document.getElementById('mise-en-page');
 
 var GRUMPIES = {
   'short': {
-      'text': "Grumpy wizards make toxic brew for the evil Queen and Jack. A quick movement of the enemy will jeopardize six gunboats. The job of waxing linoleum frequently peeves chintzy kids. My girl wove six dozen plaid jackets before she quit. Twelve ziggurats quickly jumped a finch box.",
+      'text': "Grumpy wizards make toxic brew for the evil Queen and Jack. A quick movement of the enemy will jeopardize six gunboats. The job of waxing linoleum frequently peeves chintzy kids.",
       'columns': [ // single column
           {
               sizes: [72, 48, 36, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12],
@@ -207,7 +207,7 @@ function searchingFont(){
   let folder_id = urlParams.get('id');
   console.log(filesPhp)
 
-  if (window.location.href !== 'http://localhost/type-viewer/index.php'){
+  if (window.location.href !== 'http://localhost/type-tester/index.php'){
     if (filesPhp && folder_id){
       console.log(filesPhp)
       filesPhp.forEach(function(item, i) {
@@ -234,6 +234,7 @@ function searchingFont(){
 function onFontLoaded(font, id) {
 
   getFontSize();
+  let cont_opacity = $('#sliders').find(`[data-order='${id}']`).find('input[type=range]')[0].value;
 
   let cont = document.getElementById('preview' + id);
 
@@ -254,15 +255,11 @@ function onFontLoaded(font, id) {
   $("#sliders div input[data-order=" + id +"]").prev().html(name);
   document.querySelector("[id='" + id + "']").previousElementSibling.querySelector(".infos-name").innerHTML = name;
   textToRender = document.getElementById('textField').value;
-  window.font = font;
-  
 
-  
-  if (drawMetrics) {
-      font.drawMetrics(cont, textToRender, x, y, fontSize, options);
-  }
+  window.font = font;
                    
   let path = font.getPath(textToRender, 20, fontSize, fontSize, options);
+
 
   contour = sliders_correspondant.find('.contour_CB')[0].checked;
   drawPoints = sliders_correspondant.find('.points_CB')[0].checked;
@@ -295,12 +292,14 @@ function onFontLoaded(font, id) {
 
   cont.setAttribute('viewbox', '0 100 ' + contWidth + ' ' + fontSize);
   cont.innerHTML = pathGlyphs + compose;
+  cont.style.opacity = cont_opacity + '%';
 
 }
 
 function setColumnTemplate(grumpy, previewSelector, fontfam) {
   var container = document.getElementById('headlines' + previewSelector);
   container.innerHTML = '';
+  var textFieldMEP_text = document.getElementById('textField-MEP').value;
 
   for (var k = 0; k < grumpy.columns.length; k++) {
 
@@ -312,12 +311,14 @@ function setColumnTemplate(grumpy, previewSelector, fontfam) {
 
           var textline = $('<p>').addClass('textline')
               .css('font-size', fontsize + 'px')
-              .css('font-family', fontfam)
-              .text(grumpy.text)
+              .text(textFieldMEP_text)
               .css('margin-top', (fontsize/2))
               .css('margin-bottom', (fontsize/2))
               .attr("spellcheck", "false");
           
+          if (fontfam !== 'unchange'){
+            textline.css('font-family', fontfam);
+          }
 
       $('<div/>',{'class': 'headlines-child'}).appendTo(container).append(sizelabel).append(textline)
       }
@@ -392,10 +393,21 @@ function enableHighDPICanvas(canvas) {
 }
 
 var textField = document.getElementById('textField');
+// var textFieldMEP = document.getElementById('textField-MEP');
+
 
 textField.addEventListener('change', function(){
   reloadAllFonts();
 })
+
+document.getElementById('textField-MEP').addEventListener('change', function(e){
+  reloadAllMiseEnPage()
+})
+
+function reloadAllMiseEnPage(){
+  var textFieldMEP_text = document.getElementById('textField-MEP').value;
+  $('.headlines-child > .textline').text(textFieldMEP_text);
+}
 
 function reloadAllFonts(){
   var previewSelector2 = '';
